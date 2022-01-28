@@ -7,7 +7,7 @@ using namespace std;
 #include <stdio.h>
 #include <stdlib.h>
 
-int move_x = 1;
+int move_x = 0;
 int move_y = 0;
 
 
@@ -53,28 +53,33 @@ SDL_Renderer * MainSDLWindow::GetRenderer(void){
     return this->renderer;
 }
 
+void MainSDLWindow::clear()
+{
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+}
 void keyboard() {
-    const Uint8 *keystates = SDL_GetKeyboardState(NULL);
-    if (keystates[SDL_SCANCODE_UP]) {
-        move_x = 0;
-        move_y =-1;
-        cout << "up ok ";
+      const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+        if (keystates[SDL_SCANCODE_UP]) {
+            move_x = 0;
+            move_y =-10;
+   
+            }
+        if (keystates[SDL_SCANCODE_DOWN]) {
+            move_x = 0;
+            move_y =10;
+  
+            }
+        if (keystates[SDL_SCANCODE_LEFT]) {
+            move_x = -10;
+            move_y = 0;
+
         }
-    if (keystates[SDL_SCANCODE_DOWN]) {
-        move_x = 0;
-        move_y =1;
-        cout << "down ok ";
+        if (keystates[SDL_SCANCODE_RIGHT]) {
+            move_x = 10;
+            move_y = 0;
+   
         }
-    if (keystates[SDL_SCANCODE_LEFT]) {
-        move_x = -1;
-        move_y = 0;
-        cout << "left ok ";
-    }
-    if (keystates[SDL_SCANCODE_RIGHT]) {
-        move_x = 1;
-        move_y = 0;
-        cout << "right ok ";
-    }
 }
 
 
@@ -82,19 +87,21 @@ void keyboard() {
 
 int main(void) {
     MainSDLWindow main_window;
-    main_window.Init("salut", 500,500);
+    int largeur;
+    int hauteur;
+    main_window.Init("salut", largeur = 500,  hauteur = 500);
 
     SDL_Rect srcrect;
         
     srcrect.x = 250;
     srcrect.y = 250;
-    srcrect.w = 32;
-    srcrect.h = 32;
+    srcrect.w = 20;
+    srcrect.h = 20;
+//srcrect.x<468 && srcrect.x>0 && srcrect.y<500-32 && srcrect.y>0 
+    while(true){
 
-    while( srcrect.x<468 && srcrect.x>0 && srcrect.y<500-32 && srcrect.y>0 ){
-
-        Uint32 frame_rate = 20;
-        Uint32 frame_time_start = SDL_GetTicks();
+        /*Uint32 frame_rate = 20;
+        Uint32 frame_time_start = SDL_GetTicks();*/
         srcrect.x = srcrect.x+move_x;
 
         srcrect.y = srcrect.y+move_y;
@@ -107,29 +114,29 @@ int main(void) {
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 255, 0, 0, 255 );
 
         SDL_RenderFillRect(  main_window.GetRenderer(), &srcrect );
-
         SDL_RenderPresent( main_window.GetRenderer());
-
+        SDL_SetRenderDrawColor( main_window.GetRenderer(), 25, 25, 25, 0 );
         keyboard();
+  
+            
         
-        SDL_Delay(SDL_GetTicks() - frame_time_start);
+        //SDL_Delay(SDL_GetTicks() - frame_time_start);
+        SDL_Delay(20);
 
-        while (true)
-        {
+
+        
             SDL_Event event;
             if (SDL_PollEvent(&event)){
                 if (event.type == SDL_QUIT)
                 {
-                    main_window.~MainSDLWindow();
-                    SDL_DestroyRenderer(main_window.GetRenderer());
+                    main_window.clear();
+                    break;
                     
                 }
-                else{
-                    SDL_RenderPresent(main_window.GetRenderer());
-                    
-                }
-                break;
+                
             }
+            
+        if (srcrect.x<0 ||srcrect.y<0 ||srcrect.x > largeur-srcrect.w || srcrect.y >hauteur-srcrect.h){
             break;
         }
 

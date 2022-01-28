@@ -6,6 +6,7 @@ public:
     MainSDLWindow();
     ~MainSDLWindow();
     int Init(const char *name, int largeur, int hauteur);
+    void clear();
     SDL_Renderer * GetRenderer(void);
 private:
     SDL_Window * window;
