@@ -29,7 +29,7 @@ int MainSDLWindow::Init(const char *name, int largeur,int hauteur){
         return EXIT_FAILURE;
     }
 
-    this->window = SDL_CreateWindow( name , SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED , largeur,hauteur, SDL_WindowFlags());
+    this->window = SDL_CreateWindow( name , SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED , largeur , hauteur, SDL_WindowFlags());
     if (window == NULL) {
         cout << "Error: SDL-CreateWindow() failed";
         return EXIT_FAILURE;
@@ -54,7 +54,27 @@ SDL_Renderer * MainSDLWindow::GetRenderer(void){
 }
 
 void keyboard() {
-
+    const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+    if (keystates[SDL_SCANCODE_UP]) {
+        move_x = 0;
+        move_y =-1;
+        cout << "up ok ";
+        }
+    if (keystates[SDL_SCANCODE_DOWN]) {
+        move_x = 0;
+        move_y =1;
+        cout << "down ok ";
+        }
+    if (keystates[SDL_SCANCODE_LEFT]) {
+        move_x = -1;
+        move_y = 0;
+        cout << "left ok ";
+    }
+    if (keystates[SDL_SCANCODE_RIGHT]) {
+        move_x = 1;
+        move_y = 0;
+        cout << "right ok ";
+    }
 }
 
 
@@ -76,10 +96,13 @@ int main(void) {
         Uint32 frame_rate = 20;
         Uint32 frame_time_start = SDL_GetTicks();
         srcrect.x = srcrect.x+move_x;
+
         srcrect.y = srcrect.y+move_y;
+
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 25, 25, 25, 0 );
 
-        // Clear winow
+
+
         SDL_RenderClear(  main_window.GetRenderer() );
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 255, 0, 0, 255 );
 
@@ -87,31 +110,31 @@ int main(void) {
 
         SDL_RenderPresent( main_window.GetRenderer());
 
-        const Uint8 *keystates = SDL_GetKeyboardState(NULL);
-        if (keystates[SDL_SCANCODE_UP]) {
-            move_x = 0;
-            move_y =1;
-            cout << "up ok ";
-        }
-        if (keystates[SDL_SCANCODE_DOWN]) {
-            move_x = 0;
-            move_y =-1;
-            cout << "down ok ";
-            }
-        if (keystates[SDL_SCANCODE_LEFT]) {
-            move_x = -1;
-            move_y = 0;
-            cout << "left ok ";
-        }
-        if (keystates[SDL_SCANCODE_RIGHT]) {
-            move_x = 1;
-            move_y = 0;
-            cout << "right ok ";
-        }
+        keyboard();
         
         SDL_Delay(SDL_GetTicks() - frame_time_start);
+
+        while (true)
+        {
+            SDL_Event event;
+            if (SDL_PollEvent(&event)){
+                if (event.type == SDL_QUIT)
+                {
+                    main_window.~MainSDLWindow();
+                    SDL_DestroyRenderer(main_window.GetRenderer());
+                    
+                }
+                else{
+                    SDL_RenderPresent(main_window.GetRenderer());
+                    
+                }
+                break;
+            }
+            break;
         }
+
+
+    }
     cout << srcrect.x<<" "<<srcrect.y;
-    cout << main_window.GetRenderer();
     main_window.~MainSDLWindow();
 }
