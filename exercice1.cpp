@@ -78,12 +78,12 @@ int main(void) {
     MainSDLWindow main_window;
     int largeur;
     int hauteur;
-    main_window.Init("salut", largeur = 500,  hauteur = 500);
+    main_window.Init("salut", largeur = 500,  hauteur = 600);
 
     SDL_Rect srcrect;
         
     srcrect.x = 250;
-    srcrect.y = 250;
+    srcrect.y = 350;
     srcrect.w = 20;
     srcrect.h = 20;
     while(true){
@@ -108,12 +108,12 @@ int main(void) {
         SDL_Event event;
         if (SDL_PollEvent(&event)){
             if (event.type == SDL_QUIT){
-                
+
                 main_window.clear();
                 break;                
             }      
         }    
-        if (srcrect.x<0 ||srcrect.y<0 ||srcrect.x > largeur-srcrect.w || srcrect.y >hauteur-srcrect.h){
+        if (srcrect.x<0 ||srcrect.y<100 ||srcrect.x > largeur-srcrect.w || srcrect.y >hauteur-srcrect.h){
             break;
         }
     SDL_Delay(SDL_GetTicks() - frame_time_start );
