@@ -143,6 +143,5 @@ int main(void) {
     SDL_Delay(SDL_GetTicks() - frame_time_start );
 
     }
-    cout << srcrect.x<<" "<<srcrect.y;
     main_window.~MainSDLWindow();
 }
