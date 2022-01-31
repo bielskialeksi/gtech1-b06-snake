@@ -1,0 +1,10 @@
+@startuml MainSDLWindow
+class MainSDLWindow{
++MainSDLWindow()
++~MainSDLWindow()
++Init(const char *, int, int)
++GetRenderer(void)
+-SDL_Window * 
+-SDL_Renderer * 
+}
+@enduml
