@@ -60,22 +60,22 @@ void MainSDLWindow::clear()
 }
 void keyboard() {
       const Uint8 *keystates = SDL_GetKeyboardState(NULL);
-        if (keystates[SDL_SCANCODE_UP]) {
+        if (keystates[SDL_SCANCODE_UP] &&  move_y !=10) {
             move_x = 0;
             move_y =-10;
    
             }
-        if (keystates[SDL_SCANCODE_DOWN]) {
+        if (keystates[SDL_SCANCODE_DOWN]  &&  move_y != -10){
             move_x = 0;
             move_y =10;
   
             }
-        if (keystates[SDL_SCANCODE_LEFT]) {
+        if (keystates[SDL_SCANCODE_LEFT]  &&  move_x != 10){
             move_x = -10;
             move_y = 0;
 
         }
-        if (keystates[SDL_SCANCODE_RIGHT]) {
+        if (keystates[SDL_SCANCODE_RIGHT]  &&  move_x != -10){
             move_x = 10;
             move_y = 0;
    
