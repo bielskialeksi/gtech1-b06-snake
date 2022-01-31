@@ -99,7 +99,8 @@ int main(void) {
     srcrect.h = 20;
 //srcrect.x<468 && srcrect.x>0 && srcrect.y<500-32 && srcrect.y>0 
     while(true){
-
+        SDL_Delay(20);
+        int frame_time_start = SDL_GetTicks();
         /*Uint32 frame_rate = 20;
         Uint32 frame_time_start = SDL_GetTicks();*/
         srcrect.x = srcrect.x+move_x;
@@ -107,7 +108,6 @@ int main(void) {
         srcrect.y = srcrect.y+move_y;
 
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 25, 25, 25, 0 );
-
 
 
         SDL_RenderClear(  main_window.GetRenderer() );
@@ -118,13 +118,12 @@ int main(void) {
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 25, 25, 25, 0 );
         keyboard();
   
-            
-        
+   
         //SDL_Delay(SDL_GetTicks() - frame_time_start);
-        SDL_Delay(20);
-
-
         
+
+
+ 
             SDL_Event event;
             if (SDL_PollEvent(&event)){
                 if (event.type == SDL_QUIT)
@@ -139,7 +138,9 @@ int main(void) {
         if (srcrect.x<0 ||srcrect.y<0 ||srcrect.x > largeur-srcrect.w || srcrect.y >hauteur-srcrect.h){
             break;
         }
+     
 
+    SDL_Delay(SDL_GetTicks() - frame_time_start );
 
     }
     cout << srcrect.x<<" "<<srcrect.y;
