@@ -1,0 +1,90 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Application {
+	+Application()
+	+~Application()
+	-win : MainSDLWindow*
+	-pg : Playground*
+	-frame_rate_ms : Uint32
+}
+
+
+class MainSDLWindow {
+	+MainSDLWindow()
+	+~MainSDLWindow()
+	+GetRenderer() : SDL_Renderer*
+	-renderer : SDL_Renderer*
+	-window : SDL_Window*
+	+Init(const char* winname, int width, int height) : int
+}
+
+
+class Playground {
+	+Playground(int nbrow, int nbcol)
+	+~Playground()
+	+GetSnake() : Snake*
+	-snake : Snake*
+	+Collide() : int
+	+GetScore() : int
+	+MeetFruit() : int
+	+Next(int dir) : int
+	-nbcol : int
+	-nbrow : int
+	+GenerateFruit() : void
+	+init(int dir) : void
+}
+
+
+class Segment {
+}
+
+
+class Snake {
+	+Snake()
+	+~Snake()
+	+GetHead() : Segment*
+	-head : Segment*
+	-tail : Segment*
+	+Collide() : int
+	-dir_prev : int
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+.Application o-- .MainSDLWindow
+
+
+.Application o-- .Playground
+
+
+.Playground o-- .Snake
+
+
+.Snake "2" o-- .Segment
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
+

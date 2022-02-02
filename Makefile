@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -1480,3 +1481,16 @@
   </body>
 </html>
 
+=======
+uml/classes_jeremy.png: jeremy/*.hpp
+	./uml/mk_uml.sh uml/classes_jeremy.png jeremy/*.hpp
+
+uml/classes_aleksi.png: aleksi/*.hpp
+	./uml/mk_uml.sh uml/classes_aleksi.png aleksi/*.hpp
+
+uml/classes_test.png: test/*.hpp
+	./uml/mk_uml.sh uml/classes_test.png test/*.hpp
+
+nblines:
+	@wc -l *.h *.[ch]pp
+>>>>>>> f1e0928bf1a14fed75de55c753e80c2bddc71163
