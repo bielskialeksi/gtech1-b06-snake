@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -1719,6 +1720,8 @@
 </html>
 
 =======
+=======
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4
 #! /bin/bash
 # 
 # mk_uml.sh - Build UML classes diagram from .hpp sources files
@@ -1781,4 +1784,7 @@ fi
 
 hpp2plantuml ${hpp_options_list} >"${OUTPUT_PUML}"
 plantuml "${OUTPUT_PUML}"
+<<<<<<< HEAD
 >>>>>>> f1e0928bf1a14fed75de55c753e80c2bddc71163
+=======
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4

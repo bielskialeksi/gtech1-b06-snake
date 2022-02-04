@@ -42,6 +42,18 @@ class Playground {
 
 
 class Segment {
+<<<<<<< HEAD
+=======
+	+Segment(int pos_x, int pos_y, int dir)
+	+~Segment()
+	-next : Segment*
+	+GetDIR() : int
+	+GetPOS_X() : int
+	+GetPOS_Y() : int
+	-dir : int
+	-pos_x : int
+	-pos_y : int
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4
 }
 
 
@@ -75,6 +87,12 @@ class Snake {
 .Playground o-- .Snake
 
 
+<<<<<<< HEAD
+=======
+.Segment o-- .Segment
+
+
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4
 .Snake "2" o-- .Segment
 
 

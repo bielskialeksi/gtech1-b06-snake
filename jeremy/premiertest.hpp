@@ -57,5 +57,19 @@ class Snake {
 };
 
 class Segment {
+<<<<<<< HEAD
 
+=======
+    private :
+        Segment* next;
+        int pos_x;
+        int pos_y;
+        int dir;
+    public :
+        int GetPOS_X(void);
+        int GetPOS_Y(void);
+        int GetDIR(void);
+        Segment(int pos_x, int pos_y, int dir);
+        ~Segment();
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4
 };

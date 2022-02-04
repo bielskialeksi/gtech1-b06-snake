@@ -1,7 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+uml/classes_jeremy.png: jeremy/*.hpp
+	./uml/mk_uml.sh uml/classes_jeremy.png jeremy/*.hpp
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4
 
+uml/classes_aleksi.png: aleksi/*.hpp
+	./uml/mk_uml.sh uml/classes_aleksi.png aleksi/*.hpp
 
+uml/classes_test.png: test/*.hpp
+	./uml/mk_uml.sh uml/classes_test.png test/*.hpp
 
+<<<<<<< HEAD
 
 
 
@@ -1494,3 +1504,7 @@ uml/classes_test.png: test/*.hpp
 nblines:
 	@wc -l *.h *.[ch]pp
 >>>>>>> f1e0928bf1a14fed75de55c753e80c2bddc71163
+=======
+nblines:
+	@wc -l *.h *.[ch]pp
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4

@@ -1,6 +1,10 @@
+<<<<<<< HEAD:exercice1.cpp
 #include "exercice1.hpp"
 #include "fruit.hpp"
 
+=======
+#include "testcarre.hpp"
+>>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4:test/testcarre.cpp
 #include <SDL2/SDL.h>
 #include <random>
 
