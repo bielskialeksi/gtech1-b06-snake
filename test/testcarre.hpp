@@ -11,5 +11,9 @@ public:
 private:
     SDL_Window * window;
     SDL_Renderer * renderer; 
+<<<<<<< HEAD
 };
 
+=======
+};
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1

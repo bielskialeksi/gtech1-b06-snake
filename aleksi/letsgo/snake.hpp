@@ -1,4 +1,4 @@
-#include <SDL2/SDL.h>
+
 #include "segment.cpp"
 using namespace std;
 class Snake {
@@ -6,12 +6,12 @@ class Snake {
         Segment * head;
         Segment * tail;
     public:
-        Snake();
+        Snake(int pos_x,int pos_y,int dir);
         ~Snake();
         Segment * GetHead();
         int Collide();
         int Move();
-        int GrowFront();
+        int GrowFront(int pos_x,int pos_y,int dir);
         int DeleteLast();
         int Eat();
 

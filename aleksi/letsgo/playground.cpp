@@ -18,10 +18,10 @@ Snake * Playground::GetSnake(){
 }
 
 int Collide(){
-    if (Snake.GetHead() ...){
+    head_tpm = Snake.GetHead() 
+    if ( head_tpm.GetPOS_X()<0 || head_tpm.GetPOS_Y()<0 || head_tpm.GetPOS_X()> this->nbcol || head_tpm.GetPOS_Y()> this->nbrow ){
         //si le head est different de 0<x<nbcol et 0<y<nbrow alors stop 
         //sinon rien 
-
     }
 }
 
@@ -43,7 +43,7 @@ int MeetFruit(){
 }
 
 int Next(int dir){
-
+    
 
 
 }

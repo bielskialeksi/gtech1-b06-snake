@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:exercice1.cpp
 #include "exercice1.hpp"
 #include "fruit.hpp"
@@ -7,6 +8,10 @@
 >>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4:test/testcarre.cpp
 #include <SDL2/SDL.h>
 #include <random>
+=======
+#include "testcarre.hpp"
+#include <SDL2/SDL.h>
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1
 
 #include <iostream>
 using namespace std;
@@ -24,7 +29,13 @@ MainSDLWindow::MainSDLWindow(void){
     renderer = NULL;
 }
 
+<<<<<<< HEAD
 MainSDLWindow::~MainSDLWindow(void){}
+=======
+MainSDLWindow::~MainSDLWindow(void){
+
+}
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1
 
 int MainSDLWindow::Init(const char *name, int largeur,int hauteur){
 
@@ -79,6 +90,7 @@ void keyboard() {
     }
 }
 
+<<<<<<< HEAD
 
 int main(void) {
     MainSDLWindow main_window;
@@ -87,12 +99,21 @@ int main(void) {
     int hauteur;
     main_window.Init("salut", largeur = 500,  hauteur = 600);
     
+=======
+int main(void) {
+    MainSDLWindow main_window;
+    int largeur;
+    int hauteur;
+    main_window.Init("salut", largeur = 500,  hauteur = 600);
+
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1
     SDL_Rect srcrect;
         
     srcrect.x = 250;
     srcrect.y = 350;
     srcrect.w = 20;
     srcrect.h = 20;
+<<<<<<< HEAD
     
     while(true){
         SDL_Delay(20);
@@ -101,6 +122,17 @@ int main(void) {
         srcrect.x = srcrect.x+move_x;
         srcrect.y = srcrect.y+move_y;
 
+=======
+    while(true){
+        SDL_Delay(20);
+        int frame_time_start = SDL_GetTicks();
+
+        srcrect.x = srcrect.x+move_x;
+        srcrect.y = srcrect.y+move_y;
+
+        SDL_SetRenderDrawColor( main_window.GetRenderer(), 25, 25, 25, 0 );
+
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1
 
         SDL_RenderClear(  main_window.GetRenderer() );
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 255, 0, 0, 255 );
@@ -108,6 +140,7 @@ int main(void) {
         SDL_RenderFillRect(  main_window.GetRenderer(), &srcrect );
         SDL_RenderPresent( main_window.GetRenderer());
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 25, 25, 25, 0 );
+<<<<<<< HEAD
 
 
 
@@ -117,6 +150,10 @@ int main(void) {
 
 
         keyboard();
+=======
+        keyboard();
+  
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1
    
         SDL_Event event;
         if (SDL_PollEvent(&event)){

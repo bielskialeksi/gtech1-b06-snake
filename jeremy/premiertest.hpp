@@ -58,8 +58,11 @@ class Snake {
 
 class Segment {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1
     private :
         Segment* next;
         int pos_x;
@@ -71,5 +74,8 @@ class Segment {
         int GetDIR(void);
         Segment(int pos_x, int pos_y, int dir);
         ~Segment();
+<<<<<<< HEAD
 >>>>>>> 66cc5f05b61b6de8ff61e57c3643ef3c91e675e4
+=======
+>>>>>>> 1971166cf2652b2b41eb78cbd94735704cda2cd1
 };
