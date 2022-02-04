@@ -49,7 +49,7 @@ int Snake::GrowFront(int pos_x,int pos_y,int dir){
     } // --
     
     this->head = new Segment(pos_x, pos_y); // dir utilie dans le constructeur?
-    if (old_head->next == NULL) delete old_head
+    if (old_head->next == NULL) delete old_head;
     else head->next = old_head;
 
     Segment* cur_head = this->head;
