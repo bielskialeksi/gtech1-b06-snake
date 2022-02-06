@@ -26,7 +26,6 @@ int Collide(){
 }
 
 int GetScore(){
-    //-->creer une variable score
     //renvoie le score 
     /*proposition de code :
 
@@ -38,7 +37,18 @@ int GetScore(){
 int MeetFruit(){
 
     //augmentation du score +
-    Snake.Eat();
+    /*
+    head_tpm = Snake.GetHead()
+    if(head_tpm.GetPOS_X()== fruit_pos_x && head_tpm.GetPOS_Y()== fruit_pos_y ){
+        this->score +=10;
+        Snake.Eat();
+        delete fruit;
+        GenerateFruit();
+    }else{
+        Snake.Move();
+    }
+    */
+    
 
 }
 
@@ -49,11 +59,25 @@ int Next(int dir){
 }
 
 void GenerateFruit(){
+/*
+    Segment * browsesnake = Snake.GetHead();
+    do{
+        fruit_pos_x = rand() % nbcol+1;
+        fruit_pos_y = rand() % nbrow+1;
+        while (browsesnake!= NULL || (fruit_pos_y== NULL && fruit_pos_x == NULL)){
+            if(browsesnake.GetPOS_X()== fruit_pos_x && browsesnake.GetPOS_Y()== fruit_pos_y ){
+                fruit_pos_x = NULL;
+                fruit_pos_y = NULL;
+            }
+            else{
+                browsesnake= browsesnake->next;
+            }
+        }        
+    }while(fruit_pos_x == NULL && fruit_pos_y == NULL);
 
-
-
+    fruit = new Segment(fruit_pos_x,fruit_pos_y);
 }
-
+*/
 void init(int dir){
 
 

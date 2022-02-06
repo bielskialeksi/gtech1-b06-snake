@@ -18,7 +18,7 @@ int Snake::Collide(){
 
     head_tpm= Gethead();
     Segment * browsesnake = this->head;
-    while(browsesnake->next->next != NULL){
+    while(browsesnake->next!= NULL){
         if (head_tpm.GetPOS_X() == browsesnake->next.GetPOS_X() && head_tpm.GetPOS_Y() ==  browsesnake->next.GetPOS_Y()){
 
             //le snake a touvhée sa tail alors return lose
@@ -29,7 +29,7 @@ int Snake::Collide(){
 }
 
 int Move(){
-    GrowFront();
+    GrowFront(int pos_x,int pos_y,int dir);
     DeleteLast();
     
 }
@@ -46,7 +46,22 @@ int Snake::GrowFront(int pos_x,int pos_y,int dir){
         case UP:
         pos_y -= 1;
         break;
+
+        case DOWN:
+        pos_y += 1;
+        break;
+
+        case LEFT:
+        pos_x -= 1;
+        break;
+
+        case RIGHT:
+        pos_x +=1;
+        break;
     } // --
+    this->head = new Segment(pos_x, pos_y);
+    head->next = old_head;
+    /*code prof:
     
     this->head = new Segment(pos_x, pos_y); // dir utilie dans le constructeur?
     if (old_head->next == NULL) delete old_head;
@@ -61,7 +76,7 @@ int Snake::GrowFront(int pos_x,int pos_y,int dir){
 
 void DeleteLast_2(Segment* seg){
     if(seg->next == NULL)
-}
+}*/
 
 int DeleteLast(){
     
@@ -78,6 +93,6 @@ int DeleteLast(){
 
 int Eat(){
     
-    
+    GrowFront(int pos_x,int pos_y,int dir);
 
 }
