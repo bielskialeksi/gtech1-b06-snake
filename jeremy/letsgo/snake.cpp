@@ -1,77 +1,119 @@
 #include "snake.hpp"
+#include "direction.h"
 #include <iostream>
+#include <SDL2/SDL.h>
 #include <stdio.h>
 using namespace std;
 
 Snake::Snake(int pos_x, int pos_y, int dir){
     Segment *newSegment =  new Segment(pos_x, pos_y, dir);
-
-
 }
 
 Snake::~Snake(){
 }
 
 int Snake::Collide(){
-
+    Segment head_tpm= GetHead();
+    Segment * browsesnake = this->head;
+    while(browsesnake->GetNext()!= NULL){
+        if (this->head->GetPOS_X() == browsesnake->GetNext()->GetPOS_X() && this->head->GetPOS_Y() ==  browsesnake->GetNext()->GetPOS_Y()){
+            return 1;
+        }
+        browsesnake = browsesnake->GetNext();
+    }
+    return 0;
 }
 
 Segment Snake::GetHead(){
     return *head;
 }
 
+int keyboard(int dir) {
+    const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+    if (keystates[SDL_SCANCODE_UP]) {
+        dir = UP;
+        }
+    if (keystates[SDL_SCANCODE_DOWN]){
+        dir = DOWN;
+    }
+    if (keystates[SDL_SCANCODE_LEFT]){
+        dir = LEFT;
+    }
+    if (keystates[SDL_SCANCODE_RIGHT]){
+        dir = RIGHT;
+    }
+    return dir;
+}
 
-//#define UP -1
-//#define DOWN 1
-//#define LEFT -2
-//#define RIGHT 2
-
-// dir = UP;
-// new_dir = keyboard();
-// if(new_dir != - dir)
-//   dir = new_dir;
-//else
-//  dir = dir;
-
-int Snake::DeleteLast(){
+void Snake::Eat(){
     Segment * browsesnake = this->head;
-    Segment * lastsegment = NULL;
-    while (browsesnake->next->next != NULL){
+    while (browsesnake->next != NULL){
         browsesnake = browsesnake->next;
     }
-    lastsegment = browsesnake->next;
-    browsesnake->next = NULL;
-    delete lastsegment;
+    int lastposx = browsesnake->GetPOS_X();
+    int lastposy = browsesnake->GetPOS_Y();
+    int lastdir = browsesnake->GetDir();
+    switch(lastdir){
+        case UP:
+        lastposy += 1;
+        break;
+
+        case DOWN:
+        lastposy -= 1;
+        break;
+
+        case LEFT:
+        lastposx += 1;
+        break;
+
+        case RIGHT:
+        lastposx -=1;
+        break;
+    } 
+    Segment * last_segment = new Segment(lastposx,lastposy,lastdir);
+    browsesnake->next = last_segment;
 }
 
-int Snake::GrowFront(){
-    // int pos_x, pos_y;
-    // Segment old_head = this->head;
+void Snake::Move(){
+    int pos_x, pos_y;
+    Segment * old_head = this->head;
 
-    // // -- use "dir + old_head" -> pos_x, pos_y;
-    // pos_x = old_head->pos_x;
-    // pos_y = old_head->pos_y;
-    // switch(dir){
-    //     case UP:
-    //     pos_y -= 1;
-    //     break;
-    // } // --
+    pos_x = old_head->GetPOS_X();
+    pos_y = old_head->GetPOS_Y();
+    int new_dir = keyboard(this->head->GetDir());
+    if(new_dir != - this->head->GetDir()){
+        this->head->SetDir(new_dir);
+    }
+    switch(new_dir){
+        case UP:
+        pos_y -= 1;
+        break;
 
-    // this->head = new Segment(pos_x, pos_y); // dir utilie dans le constructeur?
-    // if (old_head->next == NULL) delete old_head;
-    // else head->next = old_head;
+        case DOWN:
+        pos_y += 1;
+        break;
 
-    // Segment cur_head = this->head;
-    // while(cur_head->next != NULL) {
-    //     cur_head = cur_head->next;
-    // }
-    // delete cur_head; 
+        case LEFT:
+        pos_x -= 1;
+        break;
+
+        case RIGHT:
+        pos_x +=1;
+        break;
+    }
+
+    this->head = new Segment(pos_x, pos_y, new_dir); 
+    if (old_head->next == NULL) delete old_head;
+    else head->next = old_head;
+
+    Segment * cur_head = this->head;
+    while(cur_head->next != NULL) {
+        cur_head = cur_head->next;
+    }
+    delete cur_head; 
 }
 
-int Snake::Move(){
-    DeleteLast();
-    GrowFront();
+int main(){
+    return 0;
 }
-
-
 

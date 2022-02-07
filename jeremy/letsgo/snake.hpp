@@ -9,9 +9,8 @@ class Snake {
         ~Snake();
         Segment GetHead();
         int Collide();
-        int Move();
-        int GrowFront();
-        int DeleteLast();
-        int Eat();
+        void Keyboard();
+        void Move();
+        void Eat();
 
 };

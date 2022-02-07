@@ -48,7 +48,7 @@ SDL_Renderer * MainSDLWindow::GetRenderer(void){
     return this->renderer;
 }
 
-int main(void) {
-    MainSDLWindow main_window;
-    main_window.Init("salut", 200,200);
-}
+// int main(void) {
+//     MainSDLWindow main_window;
+//     main_window.Init("salut", 200,200);
+// }

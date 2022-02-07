@@ -25,3 +25,19 @@ int Segment::GetPOS_Y(void){
 int Segment::GetDir(void){
     return this->dir;
 }
+
+Segment * Segment::GetNext(void){
+    return this->next;
+}
+
+void Segment::SetDir(int dir_){
+    this->dir = dir_;
+}
+
+void Segment::SetPOS_X(int pos_x_){
+    this->pos_x = pos_x_;
+}
+
+void Segment::SetPOS_Y(int pos_y_){
+    this->pos_y = pos_y_;
+}

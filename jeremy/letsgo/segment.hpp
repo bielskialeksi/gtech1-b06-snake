@@ -13,4 +13,8 @@ class Segment {
         int GetPOS_X(void);
         int GetPOS_Y(void);
         int GetDir(void);
+        Segment * GetNext(void);
+        void SetDir(int dir);
+        void SetPOS_X(int pos_x);
+        void SetPOS_Y(int pos_y);
 };
