@@ -1,4 +1,6 @@
 #include "segment.hpp"
+#include <iostream>
+#include <stdio.h>
 using namespace std;
 
 Segment::Segment(int pos_x, int pos_y, int dir){
@@ -20,6 +22,6 @@ int Segment::GetPOS_Y(void){
     return this->pos_y;
 }
 
-int Segment::GetDIR(void){
+int Segment::GetDir(void){
     return this->dir;
 }

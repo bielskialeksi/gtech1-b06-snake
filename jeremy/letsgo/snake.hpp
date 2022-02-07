@@ -1,14 +1,13 @@
-#include <SDL2/SDL.h>
-#include "segment.cpp"
+#include "segment.hpp"
 using namespace std;
 class Snake {
     private:
-        Segment * head;
-        Segment * tail;
+        Segment * head = NULL;
+        Segment * tail = NULL;
     public:
-        Snake();
+        Snake(int pos_x, int pos_y, int dir);
         ~Snake();
-        Segment * GetHead();
+        Segment GetHead();
         int Collide();
         int Move();
         int GrowFront();
