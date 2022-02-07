@@ -10,9 +10,8 @@ class Snake {
         ~Snake();
         Segment * GetHead();
         int Collide();
-        int Move();
-        int GrowFront(int pos_x,int pos_y,int dir);
-        int DeleteLast();
-        int Eat();
+        void Move();
+        void Eat();
+        
 
 };
