@@ -14,27 +14,30 @@ Playground::~Playground(){
 }
 
 Snake * Playground::GetSnake(){
+    return this->litsnake;
 }
 
-void GenerateFruit(){
+void GenerateFruit(void){
 
-    
-    do{
-        Segment * browsesnake = snake->GetHead();
+
+    fruit_pos_x = NULL;
+    fruit_pos_y = NULL;
+    while(fruit_pos_x == NULL && fruit_pos_y == NULL){
+        Segment * browsnake = this->litsnake->GetHead();
         fruit_pos_x = rand() %  this->nbcol+1;
-        fruit_pos_y = rand() % nbrow+1;
-        while (browsesnake!= NULL || (fruit_pos_y!= NULL && fruit_pos_x != NULL)){
-            if(browsesnake->GetPOS_X()== fruit_pos_x && browsesnake->GetPOS_Y()== fruit_pos_y ){
+        fruit_pos_y = rand() % this->nbrow+1;
+        while (browsnake!= NULL || (fruit_pos_y!= NULL && fruit_pos_x != NULL)){
+            if(browsnake->GetPOS_X()== fruit_pos_x && browsnake->GetPOS_Y()== fruit_pos_y ){
                 fruit_pos_x = NULL;
                 fruit_pos_y = NULL;
             }
             else{
-                browsesnake= browsesnake->next;
+                browsnake= browsnake->next;
             }
-        }        
-    }while(fruit_pos_x == NULL && fruit_pos_y == NULL);
+        }       
+    }
 
-    fruit = new Segment(fruit_pos_x,fruit_pos_y);
+    this->fruit = new Segment(fruit_pos_x,fruit_pos_y,0);
 }
 
 
@@ -52,11 +55,11 @@ int GetScore(){
 
 void MeetFruit(void){
 
-    Segment * head_tpm = snake->GetHead();
+    Segment * head_tpm = this->litsnake->GetHead();
     if(head_tpm->GetPOS_X()== fruit_pos_x && head_tpm->GetPOS_Y()== fruit_pos_y ){
         this->score +=10;
-        snake->Eat();
-        delete fruit;
+        this->snake->Eat();
+        delete this->fruit;
         GenerateFruit();
     }
 }
