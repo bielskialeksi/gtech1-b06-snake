@@ -42,7 +42,7 @@ void GenerateFruit(void){
 
 
 int Collide(){
-    Segment * head_tpm = this->snake->GetHead() ;
+    Segment * head_tpm = this->litsnake->GetHead() ;
     if ( head_tpm->GetPOS_X()<0 || head_tpm->GetPOS_Y()<0 || head_tpm->GetPOS_X()> this->nbcol || head_tpm->GetPOS_Y()> this->nbrow ){
         return 1;
     }
@@ -58,7 +58,7 @@ void MeetFruit(void){
     Segment * head_tpm = this->litsnake->GetHead();
     if(head_tpm->GetPOS_X()== fruit_pos_x && head_tpm->GetPOS_Y()== fruit_pos_y ){
         this->score +=10;
-        this->snake->Eat();
+        this->litsnake->Eat();
         delete this->fruit;
         GenerateFruit();
     }
