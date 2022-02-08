@@ -14,7 +14,6 @@ class Playground {
         int Collide();
         int GetScore();
         int MeetFruit();
-        int Next(int dir);
         void GenerateFruit();
         void init(int dir);
         int fruit_pos_x;

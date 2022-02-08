@@ -59,14 +59,8 @@ void MeetFruit(void){
         delete fruit;
         GenerateFruit();
     }
-    else{
-        snake->Move();
-    }
 }
 
-int Next(int dir){
-    return 0;
-}
 int init(int dir){
     return 0;
 }
