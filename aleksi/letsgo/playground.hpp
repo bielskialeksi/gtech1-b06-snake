@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include "snake.hpp"
+#include "snake.cpp"
 using namespace std;
 
 class Playground {
@@ -20,5 +20,5 @@ class Playground {
         int fruit_pos_x;
         int fruit_pos_y;
         Segment * fruit;
-        Snake * snake = new Snake(nbcol/2,nbrow/2, RIGHT);
+        Snake * snake = new Snake(nbcol/2,nbrow/2,0);
 };

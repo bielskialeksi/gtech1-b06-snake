@@ -1,4 +1,3 @@
-
 #include "segment.cpp"
 using namespace std;
 class Snake {

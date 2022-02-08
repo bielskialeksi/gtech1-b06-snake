@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include "playground.hpp"
+#include "playground.cpp"
 #include "mainsdlwindow.hpp"
 using namespace std;
 class Application {

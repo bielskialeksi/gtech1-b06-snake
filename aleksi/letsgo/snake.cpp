@@ -1,4 +1,3 @@
-
 #include "snake.hpp"
 using namespace std;
 
@@ -15,7 +14,7 @@ Segment * Snake::GetHead(){
 
 int Snake::Collide(){
     
-    Segment * browsesnake = Gethead();
+    Segment * browsesnake = GetHead();
     while(browsesnake->next!= NULL){
         if (this->head->GetPOS_X() == browsesnake->next->GetPOS_X() && this->head->GetPOS_Y() ==  browsesnake->next->GetPOS_Y()){
             return 1;
@@ -25,20 +24,21 @@ int Snake::Collide(){
     return 0;
 }
 
-Segment Snake::GetHead(){
+Segment * Snake::GetHead(){
     return *head;
 }
 
 void Snake::Move(){
     int pos_x, pos_y;
     Segment *old_head = this->head;
-    pos_x = old_head->pos_x;
-    pos_y = old_head->pos_y;
-    new_dir=keyboard(this->head->GetDIR());
-    if( new_dir != - this->head->GetDIR()){
+    pos_x = old_head->GetPOS_X();
+    pos_y = old_head->GetPOS_Y();
+    new_dir = keyboard(this->head->GetDir());
+    if( new_dir != - this->head->GetDir()){
         this->head->Setdir(new_dir);
     }
-    switch(dir){
+    int dir = this->head->GetDir();
+    switch(){
         case UP:
         pos_y -= 1;
         break;
@@ -75,7 +75,7 @@ void Eat(){
     }
     int lastposx = browsesnake->GetPOS_X();
     int lastposy = browsesnake->GetPOS_Y();
-    int lastdir = browsesnake->GetDIR();
+    int lastdir = browsesnake->GetDir();
     switch(lastdir){
         case UP:
         lastposy += 1;

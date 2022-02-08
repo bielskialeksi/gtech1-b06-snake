@@ -17,17 +17,19 @@ int Segment::GetPOS_X(void){
 }
 
 int Segment::GetPOS_Y(void){
-    return this->posy;
+    return this->pos_y;
 }
 
 int Segment::GetDir(void){
     return this->dir;
 }
 
+void Segment::SetDir(int dir_){
+    this->dir = dir_;
+}
+
 Segment * Segment::GetNext(void){
     return this->next;
 }
 
-void Segment::SetDir(int dir){
-    this->dir = dir_;
-}
+

@@ -11,7 +11,7 @@ class Segment {
         Segment* next;
         int GetPOS_X(void);
         int GetPOS_Y(void);
-        int GetDIR(void);
         Segment * GetNext(void);
-        int Setdir(int dir)
+        int GetDir(void);
+        void Setdir(int dir);
 };
