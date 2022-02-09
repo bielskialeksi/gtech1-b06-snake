@@ -45,6 +45,7 @@ void draw_snake(){
     SDL_RenderClear(this->win->GetRenderer());
 }
 
-void Application::main(){
-
+void main(){
+    new Application();
+    delete Application();
 }
