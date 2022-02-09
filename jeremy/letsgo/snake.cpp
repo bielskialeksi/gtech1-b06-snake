@@ -6,26 +6,27 @@
 using namespace std;
 
 Snake::Snake(int pos_x, int pos_y, int dir){
-    Segment *newSegment =  new Segment(pos_x, pos_y, dir);
+    this->head=  new Segment(pos_x, pos_y, dir);
 }
 
 Snake::~Snake(){
 }
 
 int Snake::Collide(){
-    Segment head_tpm= GetHead();
+    Segment * head_tpm= GetHead();
     Segment * browsesnake = this->head;
-    while(browsesnake->GetNext()!= NULL){
-        if (this->head->GetPOS_X() == browsesnake->GetNext()->GetPOS_X() && this->head->GetPOS_Y() ==  browsesnake->GetNext()->GetPOS_Y()){
+    while(browsesnake->next != NULL){
+        if (this->head->GetPOS_X() == browsesnake->next->GetPOS_X() && this->head->GetPOS_Y() ==  browsesnake->next->GetPOS_Y()){
             return 1;
+            break;
         }
-        browsesnake = browsesnake->GetNext();
+        browsesnake = browsesnake->next;
     }
     return 0;
 }
 
-Segment Snake::GetHead(){
-    return *head;
+Segment * Snake::GetHead(){
+    return this->head;
 }
 
 int keyboard(int dir) {
@@ -103,8 +104,7 @@ void Snake::Move(){
     }
     
     this->head = new Segment(pos_x, pos_y, new_dir); 
-    if (old_head->next == NULL) delete old_head;
-    else head->next = old_head;
+    this->head->next = old_head;
 
     Segment * cur_head = this->head;
     while(cur_head->next != NULL) {
@@ -112,8 +112,3 @@ void Snake::Move(){
     }
     delete cur_head; 
 }
-
-int main(){
-    return 0;
-}
-

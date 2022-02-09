@@ -3,7 +3,7 @@
 using namespace std;
 class Playground {
     private:
-        Snake * litsnake = new Snake(nbcol/2,nbrow/2,0);
+        Snake * litsnake;
         Segment * fruit;
         int score = 0;
         int nbcol;

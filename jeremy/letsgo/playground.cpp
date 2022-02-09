@@ -1,13 +1,12 @@
 #include <SDL2/SDL.h>
 #include "playground.hpp"
-
 using namespace std;
 
 Playground::Playground(int nbrow ,int nbcol){
 
     this->nbcol = nbcol;
     this->nbrow = nbrow;
-
+    this->litsnake = new Snake(nbcol/2,nbrow/2,1);
 }
 
 Playground::~Playground(){
@@ -18,25 +17,20 @@ Snake * Playground::GetSnake(){
 }
 
 void Playground::GenerateFruit(void){
-
-
-    fruit_pos_x = NULL;
-    fruit_pos_y = NULL;
-    while(fruit_pos_x == NULL && fruit_pos_y == NULL){
-        Segment * browsnake = this->litsnake->GetHead();
         fruit_pos_x = rand() %  this->nbcol+1;
         fruit_pos_y = rand() % this->nbrow+1;
-        while (browsnake!= NULL || (fruit_pos_y!= NULL && fruit_pos_x != NULL)){
+
+        Segment * browsnake = this->litsnake->GetHead();
+        while (browsnake!= NULL){
             if(browsnake->GetPOS_X()== fruit_pos_x && browsnake->GetPOS_Y()== fruit_pos_y ){
-                fruit_pos_x = NULL;
-                fruit_pos_y = NULL;
+                fruit_pos_x = rand() %  this->nbcol+1;
+                fruit_pos_y = rand() % this->nbrow+1;
             }
             else{
                 browsnake= browsnake->next;
             }
         }       
-    }
-
+    
     this->fruit = new Segment(fruit_pos_x,fruit_pos_y,0);
 }
 
@@ -62,9 +56,16 @@ void Playground::MeetFruit(){
 
 }
 int Playground::verif_MeetFruit(){
-    Segment * head_tpm = this->litsnake->GetHead();
-    if(head_tpm->GetPOS_X()== fruit_pos_x && head_tpm->GetPOS_Y()== fruit_pos_y ){
-        return 1;
+
+    int snake_x = this->litsnake->GetHead()->GetPOS_X();
+    int snake_y = this->litsnake->GetHead()->GetPOS_Y();
+    int fruit_x = this->fruit->GetPOS_X();
+    int fruit_y = this->fruit->GetPOS_Y();
+
+    if( snake_x== fruit_x){
+        if( snake_y == fruit_y){
+            return 1;
+        }
     }
     return 0;
 }

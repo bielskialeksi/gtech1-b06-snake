@@ -13,7 +13,12 @@ MainSDLWindow::MainSDLWindow(void){
 }
 
 MainSDLWindow::~MainSDLWindow(void){
+}
 
+void MainSDLWindow::clean(){
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+    SDL_Quit();
 }
 
 int MainSDLWindow::Init(const char *name, int largeur,int hauteur){
@@ -39,8 +44,6 @@ int MainSDLWindow::Init(const char *name, int largeur,int hauteur){
 
     SDL_SetRenderDrawColor(renderer,0,0,0, SDL_ALPHA_OPAQUE);
 
-    
-    
     return EXIT_SUCCESS;
 }
 
@@ -48,7 +51,3 @@ SDL_Renderer * MainSDLWindow::GetRenderer(void){
     return this->renderer;
 }
 
-// int main(void) {
-//     MainSDLWindow main_window;
-//     main_window.Init("salut", 200,200);
-// }

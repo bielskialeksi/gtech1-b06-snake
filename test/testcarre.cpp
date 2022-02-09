@@ -140,6 +140,7 @@ int main(void) {
         SDL_RenderFillRect(  main_window.GetRenderer(), &srcrect );
         SDL_RenderPresent( main_window.GetRenderer());
         SDL_SetRenderDrawColor( main_window.GetRenderer(), 25, 25, 25, 0 );
+        
 <<<<<<< HEAD
 
 
