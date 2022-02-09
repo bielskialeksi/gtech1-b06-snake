@@ -5,6 +5,7 @@ class Playground {
     private:
         Snake * litsnake = new Snake(nbcol/2,nbrow/2,0);
         Segment * fruit;
+        int score = 0;
         int nbcol;
         int nbrow;
 
@@ -14,7 +15,7 @@ class Playground {
         Snake * GetSnake();
         int Collide();
         int GetScore();
-        int MeetFruit();
+        void MeetFruit();
         void GenerateFruit();
         void init(int dir);
         int fruit_pos_x = 0;

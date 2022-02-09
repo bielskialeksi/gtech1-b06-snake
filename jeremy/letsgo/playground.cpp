@@ -17,7 +17,7 @@ Snake * Playground::GetSnake(){
     return this->litsnake;
 }
 
-void GenerateFruit(void){
+void Playground::GenerateFruit(void){
 
 
     fruit_pos_x = NULL;
@@ -41,7 +41,7 @@ void GenerateFruit(void){
 }
 
 
-int Collide(){
+int Playground::Collide(){
     Segment * head_tpm = this->litsnake->GetHead() ;
     if ( head_tpm->GetPOS_X()<0 || head_tpm->GetPOS_Y()<0 || head_tpm->GetPOS_X()> this->nbcol || head_tpm->GetPOS_Y()> this->nbrow ){
         return 1;
@@ -49,11 +49,11 @@ int Collide(){
     return 0;
 }
 
-int GetScore(){
+int Playground::GetScore(){
     return this->score;
 }
 
-void MeetFruit(void){
+void Playground::MeetFruit(){
 
     this->score +=10;
     this->litsnake->Eat();
@@ -61,7 +61,7 @@ void MeetFruit(void){
     GenerateFruit();
 
 }
-int verif_MeetFruit(void){
+int Playground::verif_MeetFruit(){
     Segment * head_tpm = this->litsnake->GetHead();
     if(head_tpm->GetPOS_X()== fruit_pos_x && head_tpm->GetPOS_Y()== fruit_pos_y ){
         return 1;

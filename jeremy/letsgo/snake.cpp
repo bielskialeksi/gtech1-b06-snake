@@ -101,7 +101,7 @@ void Snake::Move(){
         pos_x +=1;
         break;
     }
-
+    
     this->head = new Segment(pos_x, pos_y, new_dir); 
     if (old_head->next == NULL) delete old_head;
     else head->next = old_head;

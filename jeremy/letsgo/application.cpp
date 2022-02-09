@@ -24,7 +24,7 @@ Application::Application(){
 
 Application::~Application(){}
 
-void draw_fruit(){
+void Application::draw_fruit(){
     SDL_SetRenderDrawColor( this->win->GetRenderer(), 255, 0, 0, 255 );
     SDL_Rect fruit;
     fruit.x = 0;
@@ -34,7 +34,7 @@ void draw_fruit(){
     SDL_RenderFillRect( this->win->GetRenderer(), &fruit );
     SDL_RenderClear(this->win->GetRenderer());
 }
-void draw_snake(){
+void Application::draw_snake(){
     SDL_SetRenderDrawColor( this->win->GetRenderer(), 255, 0, 0, 255 );
     SDL_Rect snake;
     snake.x = this->pg->GetSnake()->GetHead()->GetPOS_X();
@@ -45,7 +45,7 @@ void draw_snake(){
     SDL_RenderClear(this->win->GetRenderer());
 }
 
-void main(){
-    new Application();
-    delete Application();
+int main(){
+    Application * jeux = new Application();
+    delete jeux;
 }

@@ -10,7 +10,6 @@ class Application {
     public:
         Application();
         ~Application();
-        void main();
         void draw_fruit();
         void draw_snake();
 
