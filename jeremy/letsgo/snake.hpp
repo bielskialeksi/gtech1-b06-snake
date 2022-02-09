@@ -12,5 +12,5 @@ class Snake {
         void Keyboard();
         void Move();
         void Eat();
-
+        
 };

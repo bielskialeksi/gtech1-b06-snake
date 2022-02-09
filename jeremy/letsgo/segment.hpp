@@ -17,4 +17,5 @@ class Segment {
         void SetDir(int dir);
         void SetPOS_X(int pos_x);
         void SetPOS_Y(int pos_y);
+        void SetNext(Segment * next);
 };

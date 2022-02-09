@@ -51,4 +51,5 @@ SDL_Renderer * MainSDLWindow::GetRenderer(void){
 int main(void) {
     MainSDLWindow main_window;
     main_window.Init("salut", 200,200);
+    SDL_Delay(50000);
 }
