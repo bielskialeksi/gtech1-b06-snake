@@ -19,6 +19,6 @@ class Playground {
         void init(int dir);
         int fruit_pos_x = 0;
         int fruit_pos_y = 0;
-        
+        int verif_MeetFruit(void);
 
 };

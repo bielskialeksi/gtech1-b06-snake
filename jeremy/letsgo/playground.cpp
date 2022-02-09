@@ -55,13 +55,18 @@ int GetScore(){
 
 void MeetFruit(void){
 
+    this->score +=10;
+    this->litsnake->Eat();
+    delete this->fruit;
+    GenerateFruit();
+
+}
+int verif_MeetFruit(void){
     Segment * head_tpm = this->litsnake->GetHead();
     if(head_tpm->GetPOS_X()== fruit_pos_x && head_tpm->GetPOS_Y()== fruit_pos_y ){
-        this->score +=10;
-        this->litsnake->Eat();
-        delete this->fruit;
-        GenerateFruit();
+        return 1;
     }
+    return 0;
 }
 
 int init(int dir){
